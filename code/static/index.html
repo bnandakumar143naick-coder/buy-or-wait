@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Buy or Wait — Decision Ledger</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">§</span>
+        <div class="brand-text">
+          <div class="brand-name">Buy&nbsp;or&nbsp;Wait</div>
+          <div class="brand-sub">financial decision ledger</div>
+        </div>
+      </div>
+      <div class="topbar-stats" id="topbar-stats">
+        <div class="stat"><span class="stat-num" id="stat-total">—</span><span class="stat-label">requests</span></div>
+        <div class="stat"><span class="stat-num" id="stat-now">—</span><span class="stat-label">affordable now</span></div>
+        <div class="stat"><span class="stat-num" id="stat-plan">—</span><span class="stat-label">with a plan</span></div>
+        <div class="stat"><span class="stat-num" id="stat-not">—</span><span class="stat-label">not advised</span></div>
+      </div>
+      <button class="btn-batch" id="run-batch-btn">Run full 250-request batch</button>
+    </header>
+
+    <div class="body">
+      <aside class="ledger-rail">
+        <div class="rail-search">
+          <input type="text" id="search" placeholder="Search request, user, or type…" autocomplete="off" />
+        </div>
+        <div class="rail-list" id="rail-list"><div class="rail-empty">Loading requests…</div></div>
+      </aside>
+
+      <main class="statement" id="statement">
+        <div class="statement-placeholder">
+          <p>Select a request on the left to open its decision statement.</p>
+          <p class="muted">Every figure below is produced by the deterministic Python engine in
+            <code>code/</code> — reconstructed balance, 90-day forecast, and the ranked payment
+            plan — never by a language model. Ask the assistant on the right about it in plain
+            language once a request is open.</p>
+        </div>
+      </main>
+
+      <aside class="chat-rail">
+        <div class="chat-header">
+          <div class="chat-title">Ask the assistant</div>
+          <div class="chat-sub" id="chat-context">No request selected yet</div>
+        </div>
+        <div class="chat-log" id="chat-log">
+          <div class="chat-msg chat-msg-bot">
+            Select a request, then ask things like <em>“Why should I wait?”</em>,
+            <em>“Can I use installments?”</em>, or <em>“What expenses affect this?”</em>
+          </div>
+        </div>
+        <div class="chat-suggestions" id="chat-suggestions"></div>
+        <form class="chat-input-row" id="chat-form">
+          <input type="text" id="chat-input" placeholder="Ask about this request…" autocomplete="off" />
+          <button type="submit">Ask</button>
+        </form>
+      </aside>
+    </div>
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>
